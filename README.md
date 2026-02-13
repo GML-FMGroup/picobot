@@ -1,14 +1,14 @@
 # picobot
 
-`picobot` is a lightweight, skills-first agent built with Google ADK, focused on learning and education scenarios.
+`picobot` is a lightweight, skills-first agent built with Google ADK, focused on learning and education use cases.
 
 ## Scope
 
-- Keeps: local skills discovery + loading (`SKILL.md`)
-- Removes: Telegram/Feishu/Discord/WhatsApp and other social channel integrations
+- Keeps: local skill discovery and loading (`SKILL.md`)
+- Removes: Telegram/Feishu/Discord/WhatsApp and other social-channel integrations
 - Runtime: Google ADK (`LlmAgent` + function tools)
 - Bundles built-in skills under `picobot/skills`
-- Provides core tools for file, shell, web, message, and schedule workflows
+- Provides core tools for file, shell, web, messaging, and scheduling workflows
 
 ## Project Structure
 
@@ -26,19 +26,19 @@ picobot/
             └── SKILL.md
 ```
 
-## Skills Model
+## Skill Model
 
 `picobot` discovers skills from:
 
 1. `PICOBOT_WORKSPACE/skills/*/SKILL.md` (workspace, higher priority)
 2. Built-in `picobot/skills/*/SKILL.md`
 
-The agent uses two function tools:
+The agent exposes two skill tools:
 
-- `list_skills()`: returns discovered skills JSON
-- `read_skill(name)`: returns full `SKILL.md` content
+- `list_skills()`: list available skills as JSON
+- `read_skill(name)`: read full `SKILL.md` content
 
-It also exposes core action tools:
+## Built-in Action Tools
 
 - `read_file`, `write_file`, `edit_file`, `list_dir`
 - `exec` (implemented by `exec_command`)
@@ -46,35 +46,35 @@ It also exposes core action tools:
 - `message` (local outbox log)
 - `cron` (local persisted add/list/remove)
 
-## Install
+## Installation
 
 ```bash
-cd /Users/wenhaojiang/Work/code/pytorch_research/basic_networks/agi/0_auto_agent/0_auto_agent/nanobot_google_adk/picobot
+cd picobot
 pip install -e .
 ```
 
 ## Run
 
-### Option 0: Single-turn message (new)
+### Single-turn request (recommended)
 
 ```bash
-cd /Users/wenhaojiang/Work/code/pytorch_research/basic_networks/agi/0_auto_agent/0_auto_agent/nanobot_google_adk/picobot
-python -m picobot.cli -m "我的需求描述"
+cd picobot
+python -m picobot.cli -m "Describe what you can do"
 ```
 
-You can also pass identifiers:
+You can also pass explicit identifiers:
 
 ```bash
-python -m picobot.cli -m "我的需求描述" --user-id local --session-id demo001
+python -m picobot.cli -m "Describe what you can do" --user-id local --session-id demo001
 ```
 
-### Option A: ADK official CLI (recommended)
+### ADK CLI mode
 
 ```bash
-adk run /Users/wenhaojiang/Work/code/pytorch_research/basic_networks/agi/0_auto_agent/0_auto_agent/nanobot_google_adk/picobot/picobot
+adk run picobot
 ```
 
-### Option B: wrapper CLI
+### Wrapper CLI
 
 ```bash
 picobot run
@@ -87,11 +87,18 @@ picobot skills
 picobot doctor
 ```
 
-## Test
+## Classic Usage Examples
 
 ```bash
-source /Users/wenhaojiang/Work/code/pytorch_research/basic_networks/agi/0_auto_agent/0_auto_agent/nanobot_google_adk/.venv/bin/activate
-cd /Users/wenhaojiang/Work/code/pytorch_research/basic_networks/agi/0_auto_agent/0_auto_agent/nanobot_google_adk/picobot
+python -m picobot.cli -m "Go to the workspace folder, search for the latest research progress today, and create a PPT for me."
+python -m picobot.cli -m "Go to the workspace folder and download all PDF files from this page: https://bbs.kangaroo.study/forum.php?mod=viewthread&tid=467"
+```
+
+## Testing
+
+```bash
+source .venv/bin/activate
+cd picobot
 python -m unittest discover -s tests -v
 ```
 
@@ -103,5 +110,10 @@ python -m unittest discover -s tests -v
 - `PICOBOT_DEBUG`: set to `1` to print debug details to stderr, including:
   - request payload sent to the LLM runner
   - every function calling / tool calling trace with input and output
-  - skills discovery and `read_skill` selection details
-  - LLM event stream details (text / function_call / function_response / errors / finish_reason)
+  - skill discovery and `read_skill` selection details
+  - LLM event stream details (`text` / `function_call` / `function_response` / errors / finish_reason)
+
+## Acknowledgements
+
+This project is inspired by and partially adapted from [nanobot](https://github.com/HKUDS/nanobot).
+Some implementation patterns and skill-related resources are derived from that project.
