@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+"""Script entrypoint to support: python picobot-cli -m '...'."""
+
+from picobot.cli import main
+
+
+if __name__ == "__main__":
+    main()
