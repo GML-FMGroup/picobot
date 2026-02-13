@@ -90,8 +90,8 @@ picobot doctor
 ## Classic Usage Examples
 
 ```bash
-python -m picobot.cli -m "Go to the workspace folder, search for the latest research progress today, and create a PPT for me."
-python -m picobot.cli -m "Go to the workspace folder and download all PDF files from this page: https://bbs.kangaroo.study/forum.php?mod=viewthread&tid=467"
+python -m picobot.cli -m "search for the latest research progress today, and create a PPT for me."
+python -m picobot.cli -m "download all PDF files from this page: https://bbs.kangaroo.study/forum.php?mod=viewthread&tid=467"
 ```
 
 ## Testing
