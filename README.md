@@ -2,6 +2,9 @@
 
 `picobot` is a lightweight, skills-first agent built with Google ADK, focused on learning and education use cases.
 
+Compared to nanobot, picobot is intentionally smaller and simpler.
+You can think of picobot as a "Hello World" edition of the OpenClaw-style agent workflow.
+
 ## Scope
 
 - Keeps: local skill discovery and loading (`SKILL.md`)

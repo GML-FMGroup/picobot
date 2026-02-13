@@ -35,6 +35,7 @@ pip-wheel-metadata/
 downloads/
 messages/
 .picobot/
+.adk/
 
 # Node
 node_modules/
