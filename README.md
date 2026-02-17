@@ -53,6 +53,9 @@ The agent exposes two skill tools:
 
 ```bash
 cd picobot
+python3.14 -m venv .venv
+source ./.venv/bin/activate
+pip install google-adk
 pip install -e .
 ```
 
@@ -75,6 +78,7 @@ python -m picobot.cli -m "Describe what you can do" --user-id local --session-id
 
 ```bash
 adk run picobot
+adk web .
 ```
 
 ### Wrapper CLI
