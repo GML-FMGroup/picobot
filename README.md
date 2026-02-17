@@ -9,9 +9,7 @@
 You can think of `picobot` as a "Hello World" edition of the OpenClaw-style agent workflow.
 
 ## Overview
-
-- Keeps: local skill discovery and loading (`SKILL.md`)
-- Removes: Telegram/Feishu/Discord/WhatsApp and other social-channel integrations
+- Minimum implementation supporting skills
 - Runtime: Google ADK (`LlmAgent` + function tools)
 - Bundles built-in skills under `picobot/skills`
 - Provides core tools for file, shell, web, messaging, and scheduling workflows
@@ -93,10 +91,17 @@ python -m picobot.cli -m "Describe what you can do" --user-id local --session-id
 ### ADK CLI Mode
 
 ```bash
-cs picobot
+cd picobot
 adk run picobot
 adk web .
 ```
+
+### ADK Web Observability
+
+Use `adk web .` when you want an interactive chat UI plus runtime visibility.
+In ADK Web, you can inspect function calls, tool invocations, and the event sequence for each turn.
+
+![ADK Web chat and event tracing](assets/adk_web.png)
 
 ### Wrapper CLI
 
