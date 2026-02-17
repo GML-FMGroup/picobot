@@ -1,11 +1,11 @@
-# picobot
+# Picobot
 
 `picobot` is a lightweight, skills-first agent built with Google ADK, focused on learning and education use cases.
 
-Compared to nanobot, picobot is intentionally smaller and simpler.
-You can think of picobot as a "Hello World" edition of the OpenClaw-style agent workflow.
+`picobot` is implemented in 859 lines of Python code.
+You can think of `picobot` as a "Hello World" edition of the OpenClaw-style agent workflow.
 
-## Scope
+## Overview
 
 - Keeps: local skill discovery and loading (`SKILL.md`)
 - Removes: Telegram/Feishu/Discord/WhatsApp and other social-channel integrations
@@ -49,7 +49,12 @@ The agent exposes two skill tools:
 - `message` (local outbox log)
 - `cron` (local persisted add/list/remove)
 
-## Installation
+## Code Size
+
+- Python LOC: `859`
+- Counting rule: excludes `tests/`, `skills/`, and `.venv/`
+
+## Setup
 
 ```bash
 cd picobot
@@ -61,7 +66,7 @@ pip install -e .
 
 ## Run
 
-### Single-turn request (recommended)
+### Single-Turn Request (Recommended)
 
 ```bash
 cd picobot
@@ -74,7 +79,7 @@ You can also pass explicit identifiers:
 python -m picobot.cli -m "Describe what you can do" --user-id local --session-id demo001
 ```
 
-### ADK CLI mode
+### ADK CLI Mode
 
 ```bash
 adk run picobot
@@ -94,7 +99,7 @@ picobot skills
 picobot doctor
 ```
 
-## Classic Usage Examples
+## Usage Examples
 
 ```bash
 python -m picobot.cli -m "search for the latest research progress today, and create a PPT for me."
