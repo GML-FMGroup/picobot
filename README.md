@@ -1,4 +1,7 @@
-# Picobot
+<div align="center">
+  <img src="assets/picobot_logo.png" alt="picobot" width="500">
+  <h1>Picobot: Lightweight Skills-First Agent</h1>
+</div>
 
 `picobot` is a lightweight, skills-first agent built with Google ADK, focused on learning and education use cases.
 
