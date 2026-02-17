@@ -69,8 +69,16 @@ pip install -e .
 ### Single-Turn Request (Recommended)
 
 ```bash
-cd picobot
+cd workspace
 python -m picobot.cli -m "Describe what you can do"
+```
+
+### Usage Examples
+
+```bash
+cd workspace
+python -m picobot.cli -m "search for the latest research progress today, and create a PPT for me."
+python -m picobot.cli -m "download all PDF files from this page: https://bbs.kangaroo.study/forum.php?mod=viewthread&tid=467"
 ```
 
 You can also pass explicit identifiers:
@@ -82,6 +90,7 @@ python -m picobot.cli -m "Describe what you can do" --user-id local --session-id
 ### ADK CLI Mode
 
 ```bash
+cs picobot
 adk run picobot
 adk web .
 ```
@@ -99,12 +108,7 @@ picobot skills
 picobot doctor
 ```
 
-## Usage Examples
 
-```bash
-python -m picobot.cli -m "search for the latest research progress today, and create a PPT for me."
-python -m picobot.cli -m "download all PDF files from this page: https://bbs.kangaroo.study/forum.php?mod=viewthread&tid=467"
-```
 
 ## Testing
 
@@ -117,7 +121,7 @@ python -m unittest discover -s tests -v
 ## Environment Variables
 
 - `PICOBOT_MODEL`: override model (default: `gemini-3-flash-preview`)
-- `PICOBOT_WORKSPACE`: workspace root for custom skills
+  - `PICOBOT_WORKSPACE`: workspace root for custom skills
 - `PICOBOT_BUILTIN_SKILLS_DIR`: override built-in skills directory
 - `PICOBOT_DEBUG`: set to `1` to print debug details to stderr, including:
   - request payload sent to the LLM runner
